@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tribe Salon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Lightbox CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body,
+    html {
+      height: 100%;
+    }
+
+    .hero {
+      background-image: url('front.jpg');
+      /* Make sure the image is in the same folder */
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      color: white;
+      position: relative;
+    }
+
+    .topbar {
+      background: black;
+      color: white;
+      padding: 10px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .topbar a {
+      color: white;
+      text-decoration: none;
+      margin-left: 15px;
+    }
+
+    .navbar {
+      background: white;
+      border-radius: 30px;
+      padding: 20px 40px;
+      margin: 20px auto;
+      max-width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar img {
+      height: 60px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      color: black;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #d2994a;
+    }
+
+    .hero-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .hero-content h1 {
+      font-size: 48px;
+      line-height: 1.3;
+      font-weight: 600;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 12px 30px;
+      background: white;
+      color: black;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(135deg, #d2994a, #b07d32);
+      transition: all 0.4s ease;
+      z-index: -1;
+    }
+
+    .btn:hover::before {
+      width: 100%;
+    }
+
+    .btn:hover {
+      color: white;
+      transform: scale(1.05);
+    }
+
+
+    .enquire-btn {
+      background: #d2994a;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      color: black;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .enquire-btn:hover {
+      background-color: #28221a;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 32px;
+        padding: 0 20px;
+      }
+
+      .navbar {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+    }
+
+    .vision-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 80px;
+      padding-bottom: 80px;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .images {
+      position: relative;
+      width: 400px;
+      height: 400px;
+    }
+
+    .img {
+      position: absolute;
+      width: 180px;
+      height: 250px;
+      object-fit: cover;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      opacity: 0;
+      animation-duration: 1.2s;
+      animation-fill-mode: forwards;
+    }
+
+    /* Image positions */
+    .img1 {
+      top: 40%;
+      left: 0;
+      transform: rotate(15deg);
+      height: 300px;
+      width: auto;
+    }
+
+    .img2 {
+      top: 0;
+      left: 100px;
+      z-index: -1;
+      transform: rotate(0dessg);
+      height: 400px;
+      width: auto;
+    }
+
+    .img3 {
+      top: 40%;
+      left: 220px;
+      transform: rotate(15deg);
+      height: 300px;
+      width: auto;
+    }
+
+    /* Animations */
+    @keyframes slideFromLeft {
+      0% {
+        transform: translateX(-200px) rotate(-15deg);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateX(0) rotate(-15deg);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideFromTop {
+      0% {
+        transform: translateY(-200px) rotate(0deg);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideFromRight {
+      0% {
+        transform: translateX(200px) rotate(15deg);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateX(0) rotate(15deg);
+        opacity: 1;
+      }
+    }
+
+    .animate-left {
+      animation-name: slideFromLeft;
+    }
+
+    .animate-top {
+      animation-name: slideFromTop;
+    }
+
+    .animate-right {
+      animation-name: slideFromRight;
+    }
+
+    .text {
+      max-width: 600px;
+    }
+
+    .text h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    .text p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      color: black;
+    }
+
+    .about-section {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    .about-content {
+      flex: 1;
+      background-color: #000;
+      padding: 80px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about-content h2 {
+      font-size: 2.8rem;
+      margin-bottom: 30px;
+      color: #fff;
+    }
+
+    .about-content p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 600px;
+      color: #fff;
+    }
+
+    .btn {
+      background-color: #fff;
+      color: #000;
+      padding: 15px 30px;
+      font-size: 1rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      width: fit-content;
+    }
+
+    .btn:hover {
+      background-color: #f1f1f1;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    }
+
+    .about-image {
+      flex: 1;
+      max-height: 100vh;
+      overflow: hidden;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+
+
+    h1 {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .services {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 40px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      padding: 30px 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .icon-container {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      transition: transform 0.3s ease;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .icon-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover .icon-container img {
+      transform: scale(1.1);
+      filter: brightness(1.1);
+    }
+
+    .card h3 {
+      margin-bottom: 15px;
+      font-size: 20px;
+      text-align: center;
+      justify-content: center;
+    }
+
+    .card p {
+      color: #555;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    @media screen and (max-width: 768px) {
+      .services {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+
+    .men-section {
+      background: url('treatmment.jpg') no-repeat center center/cover;
+      padding: 60px 20px;
+      position: relative;
+      color: #fff;
+      text-align: center;
+    }
+
+    .men-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      /* dark transparent overlay */
+      z-index: 1;
+    }
+
+    .men-section h2 {
+      position: relative;
+      z-index: 2;
+      font-size: 32px;
+      margin-bottom: 40px;
+      font-weight: bold;
+    }
+
+    .treatment-cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .treatment-card {
+      background: white;
+      width: 180px;
+      padding: 20px 10px;
+      border-radius: 8px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .treatment-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .treatment-card img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .treatment-card p {
+      color: #000;
+      font-weight: bold;
+      font-size: 16px;
+      margin: 0;
+    }
+
+    @media screen and (max-width: 768px) {
+      .treatment-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .treatment-card {
+        width: 80%;
+      }
+    }
+
+
+  
+.gallery-section h2 {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.gallery-img {
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+
+.gallery-img:hover {
+  transform: scale(1.03);
+  opacity: 0.5; /* makes image semi-transparent */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+img:hover {
+    transform: scale(1.03);
+  opacity: 0.5; /* makes image semi-transparent */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); /* hover par transparent ho jayegi */
+  }
+
+
+
+ .contact-section {
+      background-color: #f9f9f9;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .contact-box {
+      background-color: #000;
+      color: #fff;
+      padding: 40px 20px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-icon {
+      width: 80px;
+      height: 80px;
+      background-color: #fff;
+      color: #000;
+      font-size: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+    }
+
+    .contact-title {
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .contact-info {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .contact-box {
+        margin-bottom: 20px;
+      }
+    }
+
+
+    .enquire-section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .enquire-section h2 {
+      font-weight: 700;
+      font-size: 36px;
+      margin-bottom: 40px;
+    }
+
+    .form-control {
+      border: 1px solid #ccc;
+      border-radius: 0;
+      padding: 14px;
+      font-size: 16px;
+    }
+
+    .form-control:focus {
+      border-color: #000;
+      box-shadow: none;
+    }
+
+    .btn-submit {
+      background-color: #000;
+      color: #fff;
+      padding: 12px 40px;
+      font-weight: 600;
+      font-size: 16px;
+      border: none;
+      margin-top: 20px;
+      transition: 0.3s ease;
+    }
+
+    .btn-submit:hover {
+      background-color: #333;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+      .footer {
+      background: url('footer.jpg') no-repeat center center;
+      background-size: cover;
+      color: white;
+      padding: 60px 20px 20px;
+      background-color: #000;
+    }
+
+    .footer h5 {
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .footer ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .footer ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.2);
+      padding-top: 20px;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    .footer .logo img {
+      max-width: 150px;
+      color: gainsboro;
+    }
+
+    .footer .description {
+      max-width: 400px;
+    }
+
+    .footer .social-icons a {
+      color: white;
+      font-size: 22px;
+      margin-left: 10px;
+    }
+
+    .footer .contact-icons i {
+      margin-right: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .footer .col-md-3,
+      .footer .col-md-4 {
+        margin-bottom: 30px;
+      }
+
+      .footer .social-icons {
+        text-align: center;
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="hero">
+    <img src="https://tribeunisexsalon.com/wp-content/uploads/2023/12/tribe-salon-44.jpg" alt="Salon Background"
+      style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: -1;" />
+    <!-- Top bar -->
+    <div class="topbar">
+      <div>
+        📞 +91 8138 877732 &nbsp;&nbsp;
+        📧 <a href="mailto:thetribehaircompany@gmail.com">thetribehaircompany@gmail.com</a>
+      </div>
+      <a href="#" class="enquire-btn">ENQUIRE NOW</a>
+    </div>
+
+    <!-- Navbar -->
+    <div class="navbar">
+      <img
+        src="data:image/png;base64,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"
+        alt="Tribe Salon Logo" />
+      <div class="nav-links">
+        <a href="#Home">Home</a>
+        <a href="#About Us">About Us</a>
+        <a href="#Services">Services</a>
+        <a href="#Gallery">Gallery</a>
+        <a href="#Contact">Contact Us</a>
+      </div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="hero-content">
+      <h1>Where Beauty is a Ritual<br>and Style is a Statement</h1>
+      <a href="#" class="btn">Book Now</a>
+    </div>
+  </div>
+  <div class="vision-section">
+    <div class="images">
+      <img src="https://tribeunisexsalon.com/wp-content/uploads/2023/12/tribes-unisex-salon-1.jpg"
+        class="img img1 animate-left" alt="Salon Image 1">
+      <img src="https://tribeunisexsalon.com/wp-content/uploads/2023/12/tribes-unisex-salon-3.jpg"
+        class="img img2 animate-top" alt="Salon Image 2">
+      <img src="https://tribeunisexsalon.com/wp-content/uploads/2023/12/tribes-unisex-salon-2.jpg"
+        class="img img3 animate-right" alt="Salon Image 3">
+    </div>&nbsp; &nbsp; &nbsp; &nbsp;
+    <div class="text">
+      <h2>Our Vision</h2>
+      <p>
+        To be a customer-centric salon chain, Tribe Unisex Salon warmly welcomes all customers for a world-class
+        experience
+        that takes them on a high level in terms of quality hair, beauty, & skin services in a hygienic, relaxed,
+        comfortable
+        environment to make their day fabulous.
+      </p>
+    </div>
+  </div>
+
+
+
+  <section class="about-section" id="About Us">
+    <div class="about-content">
+      <h2>About Tribe Unisex Salon</h2>
+      <p>
+        Tribe Unisex Salon offers a world-class hairdressing experience to its esteemed customers with a team of
+        well-trained professionals in the industry.
+        We choose the best-in-class products to ensure consistent and quality results for the services at every door.
+        Our team of hairdressers is being trained and recruited by the Loreal education team.
+      </p>
+      <a href="#" class="btn">Download Profile</a>
+    </div>
+    <div class="about-image">
+      <img
+        src="data:image/jpeg;base64,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"
+        alt="Salon Interior">
+    </div>
+  </section>
+
+
+  <h1>OUR SERVICES</h1>
+
+  <div class="services" id="Services">
+    <div class="card">
+      <div class="icon-container">
+        <img src="https://tribeunisexsalon.com/wp-content/uploads/2023/12/haircut.svg" alt="Haircut & Styling">
+      </div>
+      <h3>Haircut & Styling</h3>
+      <p>Discover the art of personalized beauty at Tribe Unisex Salon, where expert stylists craft the perfect haircut
+        and elevate your style with precision and flair.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon-container">
+        <img src="https://tribeunisexsalon.com/wp-content/uploads/2023/12/shampoo.svg" alt="Hair Care Treatments">
+      </div>
+      <h3>Hair Care Treatments</h3>
+      <p>Elevate your tresses to new heights of health and beauty with Tribe Unisex Salon's indulgent hair care and
+        treatments, where every strand is nurtured to radiance.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon-container">
+        <img src="https://tribeunisexsalon.com/wp-content/uploads/2023/12/hair-dye-1.svg" alt="Hair Color">
+      </div>
+      <h3>Hair Color</h3>
+      <p>Immerse yourself in a world of vibrant possibilities as Tribe Unisex Salon transforms your look with expertly
+        crafted and personalized hair color services.</p>
+    </div>
+  </div>
+
+  <div class="services">
+    <div class="card">
+      <div class="icon-container">
+        <img src="https://tribeunisexsalon.com/wp-content/uploads/2023/12/threading-1.svg" alt="Spa & Relaxation">
+      </div>
+      <h3>Threading</h3>
+      <p>Define your beauty with precision and care at Tribe Unisex Salon, where threading services sculpt your brows
+        and enhance your facial features with expert finesse.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon-container">
+        <img src="https://tribeunisexsalon.com/wp-content/uploads/2023/12/wax.svg" alt="Beard Grooming">
+      </div>
+      <h3>Waxing</h3>
+      <p>Experience silky smooth perfection at Tribe Unisex Salon, where our waxing services redefine your skin, leaving
+        you flawlessly groomed and ready to conquer every day.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon-container">
+        <img src="https://tribeunisexsalon.com/wp-content/uploads/2023/12/manicure.svg" alt="Bridal Makeup">
+      </div>
+      <h3>Manicure</h3>
+      <p>Pamper your hands to perfection at Tribe Unisex Salon, where our meticulous manicure services combine expert
+        care and trendy designs for nails about your style.</p>
+    </div>
+  </div>
+
+
+  <div class="services">
+    <div class="card">
+      <div class="icon-container">
+        <img src="https://tribeunisexsalon.com/wp-content/uploads/2023/12/washing.svg" alt="Spa & Relaxation">
+      </div>
+      <h3>Cleanup</h3>
+      <p>Experience the revitalizing touch of Tribe Unisex Salon's cleanup services, where skilled professionals pamper
+        your skin, leaving it refreshed, rejuvenated, and glowing.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon-container">
+        <img src="https://tribeunisexsalon.com/wp-content/uploads/2023/12/face-mask.svg" alt="Beard Grooming">
+      </div>
+      <h3>Basic Facials</h3>
+      <p>Indulge in pure relaxation and skincare bliss with Tribe Unisex Salon's basic facials, expertly tailored to
+        leave your complexion refreshed, revitalized, and radiantly beautiful</p>
+    </div>
+
+    <div class="card">
+      <div class="icon-container">
+        <img src="https://tribeunisexsalon.com/wp-content/uploads/2023/12/beauty-treatment.svg" alt="Bridal Makeup">
+      </div>
+      <h3>Advanced Facial</h3>
+      <p>Elevate your skincare routine to new heights with Tribe Unisex Salon's advanced facials, where our techniques
+        and products converge to unveil a radiant complexion.</p>
+    </div>
+  </div>
+
+
+  <div class="services">
+    <div class="card">
+      <div class="icon-container">
+        <img src="https://tribeunisexsalon.com/wp-content/uploads/2023/12/skincare.svg" alt="Spa & Relaxation">
+      </div>
+      <h3>Texture Service</h3>
+      <p>Smoothening, Straightening, Permanent Blowdry, Nanoplastia, Kerasmooth, Keratin and Botox Treatment comes under
+        this texture service.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon-container">
+        <img src="https://tribeunisexsalon.com/wp-content/uploads/2023/12/tanning-1.svg" alt="Beard Grooming">
+      </div>
+      <h3>De-Tan</h3>
+      <p>Renew your glow and embrace radiant skin with Tribe Unisex Salon's specialized de-tan treatments, restoring
+        your natural beauty with every visit.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon-container">
+        <img src="https://tribeunisexsalon.com/wp-content/uploads/2023/12/serum.svg" alt="Bridal Makeup">
+      </div>
+      <h3>Bleach</h3>
+      <p>Illuminate your beauty with Tribe Unisex Salon's expert bleach treatments, tailored to enhance your skin's
+        natural radiance and leave you with a luminous, refreshed glow.</p>
+    </div>
+  </div>
+
+
+  <section class="men-section">
+    <h2>MEN'S STYLING AND TREATMENT</h2>
+    <div class="treatment-cards">
+      <div class="treatment-card">
+        <img src="https://tribeunisexsalon.com/wp-content/uploads/2023/12/haircut1.svg" alt="Hair Cut">
+        <p>Hair Cut</p>
+      </div>
+      <div class="treatment-card">
+        <img src="https://tribeunisexsalon.com/wp-content/uploads/2023/12/beard.svg" alt="Beard Design">
+        <p>Beard Design</p>
+      </div>
+      <div class="treatment-card">
+        <img src="https://tribeunisexsalon.com/wp-content/uploads/2023/12/beard1.svg" alt="Beard Colour">
+        <p>Beard Colour</p>
+      </div>
+      <div class="treatment-card">
+        <img src="https://tribeunisexsalon.com/wp-content/uploads/2023/12/baby-oil.svg" alt="Cream Oil Massage">
+        <p>Cream Oil Massage</p>
+      </div>
+      <div class="treatment-card">
+        <img src="https://tribeunisexsalon.com/wp-content/uploads/2023/12/dandruff.svg" alt="Dandruff Treatment">
+        <p>Dandruff Treatment</p>
+      </div>
+    </div>
+  </section>
+
+<section class="gallery-section py-5 text-center" id="Gallery">
+    <div class="container">
+      <h2 class="fw-bold mb-5">OUR GALLERY</h2>
+      <div class="row justify-content-center gy-4">
+        <!-- Gallery Image 1 -->
+        <div class="col-md-4">
+          <a href="images/OUR.jpg" data-lightbox="gallery">
+            <img src="https://tribeunisexsalon.com/wp-content/uploads/2023/12/WhatsApp-Image-2023-12-22-at-2.54.20-PM-1024x683.jpeg" class="img-fluid gallery-img" alt="Gallery Image 1" />
+          </a>
+        </div>
+        <!-- Repeat for 6 images -->
+        <div class="col-md-4">
+          <a href="images/OUR.jpg" data-lightbox="gallery">
+            <img src="https://tribeunisexsalon.com/wp-content/uploads/2023/12/WhatsApp-Image-2023-12-22-at-2.54.19-PM-1024x683.jpeg" class="img-fluid gallery-img" alt="Gallery Image 2" />
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="images/OUR.jpg" data-lightbox="gallery">
+            <img src="https://tribeunisexsalon.com/wp-content/uploads/2023/12/WhatsApp-Image-2023-12-22-at-2.54.20-PM-1-1024x683.jpeg" class="img-fluid gallery-img" alt="Gallery Image 3" />
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="images/OUR.jpg" data-lightbox="gallery">
+             <img src="https://tribeunisexsalon.com/wp-content/uploads/2023/05/portrait-beautiful-blond-woman-with-long-hair-makeup-brushes-near-attractive-face-576x1024.jpg" alt="Gallery Image 4" style="height: 280px; width: 400px; object-fit: cover; border-radius: 8px"/> 
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="images/OUR.jpg" data-lightbox="gallery">
+            <img src="https://tribeunisexsalon.com/wp-content/uploads/2021/12/hairdresser-taking-care-her-client-1-1024x683.jpeg" class="img-fluid gallery-img" alt="Gallery Image 5" />
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="images/OUR.jpg" data-lightbox="gallery">
+            <img src="https://tribeunisexsalon.com/wp-content/uploads/2021/12/brunette-girl-getting-her-hair-dried-1024x684.jpg" class="img-fluid gallery-img" alt="Gallery Image 6" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+   <section class="contact-section" id="Contact">
+    <div class="container">
+      <h2 class="mb-5 fw-bold">CONTACT US</h2>
+      <div class="row justify-content-center g-4">
+        
+        <!-- CALL NOW -->
+        <div class="col-md-4">
+          <div class="contact-box">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+               <img src="https://icons.iconarchive.com/icons/fa-team/fontawesome/512/FontAwesome-Square-Phone-icon.png" alt="Phone Icon" style="width: 40px;">
+            </div>
+            <div class="contact-title">CALL NOW</div>
+            <div class="contact-info">
+              +91 8138 877732 <br>
+              +91 97461 77732
+            </div>
+          </div>
+        </div>
+
+        <!-- WHATSAPP -->
+        <div class="col-md-4">
+          <div class="contact-box">
+            <div class="contact-icon">
+              <i class="fab fa-whatsapp"></i>
+               <img src="data:image/png;base64,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" alt="Phone Icon" style="width: 40px;">
+            </div>
+            <div class="contact-title">WHATSAPP</div>
+            <div class="contact-info">
+              +91 8138 877732 <br>
+              +91 97461 77732
+            </div>
+          </div>
+        </div>
+
+        <!-- LOCATION -->
+        <div class="col-md-4">
+          <div class="contact-box">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+               <img src="data:image/png;base64,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" alt="Phone Icon" style="width: 40px;">
+            </div>
+            <div class="contact-title">REACH US</div>
+            <div class="contact-info">
+              Ponnurunni <br>
+              Thripunithura
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="enquire-section">
+  <div class="container">
+    <h2>ENQUIRE NOW</h2>
+    <form>
+      <div class="row g-3 justify-content-center">
+        <div class="col-md-5">
+          <input type="text" class="form-control" placeholder="Name" required>
+        </div>
+        <div class="col-md-5">
+          <input type="email" class="form-control" placeholder="Email" required>
+        </div>
+        <div class="col-md-5">
+          <input type="tel" class="form-control" placeholder="Phone" required>
+        </div>
+        <div class="col-md-5">
+          <input type="text" class="form-control" placeholder="Subject">
+        </div>
+        <div class="col-md-5">
+          <input type="date" class="form-control" placeholder="dd-mm-yyyy" required>
+        </div>
+        <div class="col-md-5">
+          <input type="time" class="form-control" placeholder="Booking Time" required>
+        </div>
+        <div class="col-md-10">
+          <textarea rows="4" class="form-control" placeholder="Comments"></textarea>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-submit mt-4">SEND MESSAGE</button>
+    </form>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <!-- Logo & Description -->
+      <div class="col-md-4">
+        <div class="logo mb-3">
+          <img src="https://tribeunisexsalon.com/wp-content/uploads/2023/12/Logo-main-1.svg" alt="Tribe Salon Logo">
+        </div>
+        <p class="description">
+          Tribe salon offers world class hairdressing experience to its esteemed customers with a team of well trained professionals in the industry. We choose the best in class products to ensure consistent and quality results for the services at every door. Our team of hairdressers are being trained and recruited by Loreal education team.
+        </p>
+      </div>
+
+      <!-- Services -->
+      <div class="col-md-2">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#">Haircut & Styling</a></li>
+          <li><a href="#">Hair Care Treatments</a></li>
+          <li><a href="#">Hair Color</a></li>
+          <li><a href="#">Threading</a></li>
+          <li><a href="#">Waxing</a></li>
+          <li><a href="#">Manicure</a></li>
+          <li><a href="#">View More</a></li>
+        </ul>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-md-2">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Gallery</a></li>
+          <li><a href="#">Book Now</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+        <h5 class="mt-4">Downloads</h5>
+        <ul>
+          <li><a href="#">Company Profile</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="col-md-4">
+        <h5>Tribe Salon</h5>
+        <ul class="contact-icons">
+          <li><i class="fas fa-map-marker-alt"></i> Ponnurunni | Thripunithura<br>Ernakulam, Kochi, Kerala</li>
+          <li><i class="fas fa-phone"></i> +91 8138 877732</li>
+          <li><i class="fas fa-envelope"></i> thetribehaircompany@gmail.com</li>
+        </ul>
+        <div class="social-icons mt-3">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Text -->
+    <div class="footer-bottom mt-4">
+      &copy; 2025 Tribe salon. All Rights Reserved | Powered By Threadsys
+    </div>
+  </div>
+</footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+</body>
+
+</html>
